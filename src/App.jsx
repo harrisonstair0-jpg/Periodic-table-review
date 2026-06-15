@@ -268,7 +268,7 @@ function ElementTile({ element, selected, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex aspect-square min-h-[48px] flex-col overflow-hidden rounded-md border p-1 text-left transition duration-300 hover:-translate-y-1 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-white/40"
+      className="group relative flex h-full min-h-[48px] w-full flex-col overflow-hidden rounded-md border p-1 text-left transition duration-300 hover:-translate-y-1 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-white/40"
       style={{
         gridColumn: element.group + 1,
         gridRow: element.period > 7 ? element.period + 2 : element.period + 1,
@@ -309,6 +309,7 @@ function DetailModal({ element, onClose, onRelatedClick }) {
   if (!element) return null;
 
   const style = getStyle(element.category);
+  const coolFact = element.funFacts[0];
   const relatedElements = element.related
     .map((atomicNumber) => elements.find((candidate) => candidate.atomicNumber === atomicNumber))
     .filter(Boolean);
@@ -352,6 +353,20 @@ function DetailModal({ element, onClose, onRelatedClick }) {
             </button>
           </div>
         </div>
+
+        <section
+          className="mb-5 rounded-md border p-4"
+          style={{
+            borderColor: style.border,
+            background: `linear-gradient(135deg, ${style.soft}, rgba(255,255,255,0.045))`,
+            boxShadow: `0 0 28px ${style.soft}`,
+          }}
+        >
+          <h3 className="text-sm font-black uppercase tracking-[0.18em]" style={{ color: style.accent }}>
+            Cool Fact
+          </h3>
+          <p className="mt-2 text-xl font-black leading-7 text-white">{coolFact}</p>
+        </section>
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.95fr)]">
           <div>
