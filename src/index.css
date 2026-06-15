@@ -22,10 +22,10 @@ input {
 }
 
 .periodic-grid {
-  width: max(100%, 1880px);
-  min-height: max(100%, 840px);
-  grid-template-columns: minmax(46px, 0.52fr) repeat(18, minmax(94px, 1fr));
-  grid-template-rows: minmax(30px, 0.34fr) repeat(7, minmax(74px, 1fr)) minmax(20px, 0.22fr) repeat(2, minmax(74px, 1fr));
+  width: max(100%, 1360px);
+  min-height: max(100%, 620px);
+  grid-template-columns: minmax(34px, 0.52fr) repeat(18, minmax(66px, 1fr));
+  grid-template-rows: minmax(24px, 0.34fr) repeat(7, minmax(54px, 1fr)) minmax(16px, 0.22fr) repeat(2, minmax(54px, 1fr));
 }
 
 .axis-corner,
@@ -45,10 +45,10 @@ input {
 
 .axis-label {
   display: grid;
-  min-height: 30px;
+  min-height: 24px;
   place-items: center;
   border-radius: 6px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 900;
 }
 
@@ -62,13 +62,13 @@ input {
 
 .series-label {
   display: flex;
-  min-height: 74px;
+  min-height: 54px;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
   padding: 6px;
   text-align: center;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -77,7 +77,7 @@ input {
 
 .series-placeholder {
   display: flex;
-  min-height: 74px;
+  min-height: 54px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -87,15 +87,15 @@ input {
 }
 
 .series-placeholder span {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 900;
 }
 
 .series-placeholder small {
   margin-top: 4px;
-  max-width: 64px;
+  max-width: 54px;
   text-align: center;
-  font-size: 9px;
+  font-size: 8px;
   line-height: 1.2;
   color: rgba(148, 163, 184, 0.95);
 }
