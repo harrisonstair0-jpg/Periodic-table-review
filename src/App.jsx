@@ -271,7 +271,7 @@ function ElementTile({ element, selected, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex h-full min-h-[74px] w-full flex-col overflow-hidden rounded-md border p-2 text-left transition duration-300 hover:-translate-y-1 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-white/40"
+      className="group relative flex h-full min-h-[64px] w-full flex-col overflow-hidden rounded-md border p-1.5 text-left transition duration-300 hover:-translate-y-1 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-white/40"
       style={{
         gridColumn: element.group + 1,
         gridRow: element.period > 7 ? element.period + 2 : element.period + 1,
@@ -288,19 +288,19 @@ function ElementTile({ element, selected, onClick }) {
         style={{ background: style.accent }}
       />
       <span className="flex items-start justify-between gap-1">
-        <span className="text-xl font-black leading-none text-white">{element.symbol}</span>
-        <span className="rounded-sm px-1.5 py-0.5 text-[10px] font-bold text-black" style={{ background: style.accent }}>
+        <span className="text-lg font-black leading-none text-white">{element.symbol}</span>
+        <span className="rounded-sm px-1 py-0.5 text-[9px] font-bold text-black" style={{ background: style.accent }}>
           {element.atomicNumber}
         </span>
       </span>
-      <span className="mt-1 line-clamp-2 min-h-[1.45rem] text-[11px] font-bold leading-[1.1] text-slate-100">
+      <span className="mt-1 line-clamp-2 min-h-[1.25rem] text-[10px] font-bold leading-[1.08] text-slate-100">
         {element.name}
       </span>
-      <span className="mt-auto flex items-center gap-1 text-[9px] font-medium text-slate-300">
-        <CalendarDays className="h-3 w-3" />
+      <span className="mt-auto flex items-center gap-0.5 text-[8px] font-medium text-slate-300">
+        <CalendarDays className="h-2.5 w-2.5" />
         Mass {element.atomicMass}
       </span>
-      <span className="mt-0.5 line-clamp-1 text-[9px] leading-tight text-slate-400">
+      <span className="mt-0.5 line-clamp-1 text-[8px] leading-tight text-slate-400">
         {element.category}
       </span>
       <span className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100" style={{ background: `radial-gradient(circle at 50% 0%, ${style.soft}, transparent 58%)` }} />
