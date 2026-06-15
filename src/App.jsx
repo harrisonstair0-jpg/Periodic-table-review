@@ -65,7 +65,7 @@ function App() {
         <div className="absolute inset-0 opacity-[0.14] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:42px_42px]" />
       </div>
 
-      <section className="relative z-10 flex h-screen w-full flex-col gap-3 px-3 py-3 sm:px-4">
+      <section className="relative z-10 flex h-screen w-full flex-col gap-2 px-1.5 py-1.5 sm:px-2 sm:py-2">
         <Header
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -100,35 +100,38 @@ function Header({
   resultCount,
 }) {
   return (
-    <header className="flex shrink-0 flex-col gap-2 border-b border-white/10 pb-2">
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-        <div className="min-w-0">
-          <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-teal-200/80">
+    <header className="flex shrink-0 flex-col gap-1.5 rounded-md border border-white/10 bg-black/35 px-2 py-2 backdrop-blur lg:flex-row lg:items-center">
+      <div className="flex min-w-0 flex-col gap-2 lg:flex-1">
+        <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-teal-200/80">
             <Sparkles className="h-4 w-4" />
             Element explorer
+            </div>
+            <h1 className="font-display text-xl font-black tracking-normal text-white sm:text-2xl">
+              Periodic Table
+            </h1>
           </div>
-          <h1 className="font-display text-2xl font-black tracking-normal text-white sm:text-3xl">
-            Periodic Table
-          </h1>
+
+          <div className="grid gap-2 sm:grid-cols-[minmax(220px,340px)_auto] lg:ml-auto lg:items-center">
+            <label className="relative block">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                placeholder="Search elements, symbols, uses..."
+                className="h-8 w-full rounded-md border border-white/15 bg-white/[0.07] pl-9 pr-3 text-sm text-white outline-none transition focus:border-teal-300 focus:bg-white/[0.10] focus:ring-2 focus:ring-teal-300/30"
+              />
+            </label>
+            <div className="flex h-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.06] px-3 text-xs font-semibold text-slate-200">
+              {resultCount} tiles
+            </div>
+          </div>
         </div>
 
-        <div className="grid gap-2 sm:grid-cols-[minmax(240px,360px)_auto] lg:items-center">
-          <label className="relative block">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-            <input
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Search elements, symbols, uses..."
-              className="h-9 w-full rounded-md border border-white/15 bg-white/[0.07] pl-10 pr-4 text-sm text-white outline-none transition focus:border-teal-300 focus:bg-white/[0.10] focus:ring-2 focus:ring-teal-300/30"
-            />
-          </label>
-          <div className="flex h-9 items-center justify-center rounded-md border border-white/10 bg-white/[0.06] px-4 text-sm font-semibold text-slate-200">
-            {resultCount} tiles
-          </div>
-        </div>
       </div>
 
-      <nav aria-label="Category filters" className="table-scroll flex gap-2 overflow-x-auto pb-1">
+      <nav aria-label="Category filters" className="table-scroll flex min-w-0 flex-1 gap-1.5 overflow-x-auto lg:max-w-[56vw]">
         {[allCategoriesLabel, ...categories].map((category) => {
           const isActive = activeCategory === category;
           const style = category === allCategoriesLabel ? categoryStyles["Reactive nonmetals"] : getStyle(category);
@@ -137,7 +140,7 @@ function Header({
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className="inline-flex h-7 shrink-0 items-center gap-2 whitespace-nowrap rounded-md border px-2.5 text-xs font-semibold transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white/35"
+              className="inline-flex h-7 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-md border px-2 text-xs font-semibold transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white/35"
               style={{
                 borderColor: isActive ? style.border : "rgba(255,255,255,0.12)",
                 background: isActive ? style.soft : "rgba(255,255,255,0.045)",
@@ -177,8 +180,8 @@ function PeriodicTable({ elementsList, selectedId, onSelect }) {
 
   return (
     <section aria-label="Periodic table of elements" className="min-h-0 min-w-0 flex-1">
-      <div className="table-scroll h-full overflow-auto rounded-md border border-white/10 bg-black/20 p-3 shadow-2xl shadow-black/40 backdrop-blur">
-        <div className="periodic-grid grid gap-1.5">
+      <div className="table-scroll h-full overflow-auto rounded-md border border-white/10 bg-black/20 p-1.5 shadow-2xl shadow-black/40 backdrop-blur sm:p-2">
+        <div className="periodic-grid grid gap-1.5 sm:gap-2">
           <div className="axis-corner" aria-hidden="true" />
           {groupNumbers.map((group) => (
             <div
@@ -268,7 +271,7 @@ function ElementTile({ element, selected, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex h-full min-h-[48px] w-full flex-col overflow-hidden rounded-md border p-1 text-left transition duration-300 hover:-translate-y-1 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-white/40"
+      className="group relative flex h-full min-h-[58px] w-full flex-col overflow-hidden rounded-md border p-1.5 text-left transition duration-300 hover:-translate-y-1 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-white/40"
       style={{
         gridColumn: element.group + 1,
         gridRow: element.period > 7 ? element.period + 2 : element.period + 1,
@@ -285,19 +288,19 @@ function ElementTile({ element, selected, onClick }) {
         style={{ background: style.accent }}
       />
       <span className="flex items-start justify-between gap-1">
-        <span className="text-base font-black leading-none text-white">{element.symbol}</span>
-        <span className="rounded-sm px-1 py-0.5 text-[8px] font-bold text-black" style={{ background: style.accent }}>
+        <span className="text-lg font-black leading-none text-white">{element.symbol}</span>
+        <span className="rounded-sm px-1 py-0.5 text-[9px] font-bold text-black" style={{ background: style.accent }}>
           {element.atomicNumber}
         </span>
       </span>
-      <span className="mt-1 line-clamp-2 min-h-[1.05rem] text-[8px] font-bold leading-[1.05] text-slate-100">
+      <span className="mt-1 line-clamp-2 min-h-[1.2rem] text-[9px] font-bold leading-[1.08] text-slate-100">
         {element.name}
       </span>
-      <span className="mt-auto flex items-center gap-0.5 text-[7px] font-medium text-slate-300">
-        <CalendarDays className="h-2 w-2" />
+      <span className="mt-auto flex items-center gap-0.5 text-[8px] font-medium text-slate-300">
+        <CalendarDays className="h-2.5 w-2.5" />
         Mass {element.atomicMass}
       </span>
-      <span className="mt-0.5 line-clamp-1 text-[7px] leading-tight text-slate-400">
+      <span className="mt-0.5 line-clamp-1 text-[8px] leading-tight text-slate-400">
         {element.category}
       </span>
       <span className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100" style={{ background: `radial-gradient(circle at 50% 0%, ${style.soft}, transparent 58%)` }} />
